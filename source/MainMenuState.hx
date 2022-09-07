@@ -121,9 +121,35 @@ class MainMenuState extends MusicBeatState
 			if(optionShit.length < 6) scr = 0;
 			menuItem.scrollFactor.set(0, scr);
 			menuItem.antialiasing = ClientPrefs.globalAntialiasing;
+
 			//menuItem.setGraphicSize(Std.int(menuItem.width * 0.58));
-			menuItem.updateHitbox();
-		}
+                        menuItem.updateHitbox();
+                        switch (i) 
+                        {
+                            case 0:
+                                menuItem.x -= 250
+                                menuItem.y -= 80
+                            case 1:
+                                menuItem.x -= 250
+                                menuItem.y -= 80
+                            case 2:
+                                menuItem.x -= 250
+                                menuItem.y -= 80
+                            case 3:
+                                menuItem.x -= 250
+                                menuItem.y -= 80
+                            case 4:
+                                menuItem.x -= 250
+                                menuItem.y -= 80
+                            case 5:
+                                menuItem.x -= 250
+                                menuItem.y -= 80
+                            case 6:
+                                menuItem.x -= 250
+                                menuItem.y -= 80
+                       }
+		      
+                } 
 
 		FlxG.camera.follow(camFollowPos, null, 1);
 
@@ -237,19 +263,19 @@ class MainMenuState extends MusicBeatState
 
 								switch (daChoice)
 								{
-									case 'story_mode':
+									case 'Story_Mode':
 										MusicBeatState.switchState(new StoryMenuState());
-									case 'freeplay':
+									case 'Freeplay':
 										MusicBeatState.switchState(new FreeplayState());
 									#if MODS_ALLOWED
-									case 'mods':
+									case 'Mods':
 										MusicBeatState.switchState(new ModsMenuState());
 									#end
-									case 'awards':
+									case 'Awards':
 										MusicBeatState.switchState(new AchievementsMenuState());
-									case 'credits':
+									case 'Credits':
 										MusicBeatState.switchState(new CreditsState());
-									case 'options':
+									case 'Options':
 										LoadingState.loadAndSwitchState(new options.OptionsState());
 								}
 							});
