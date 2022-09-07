@@ -85,6 +85,6 @@ class CustomFadeTransition extends MusicBeatSubstate {
 			finishCallback();
 			leTween.cancel();
 		}
-		super.destroy()
+		super.destroy();
 	}
 }
