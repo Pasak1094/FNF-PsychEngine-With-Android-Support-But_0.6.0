@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Build
+name: html5
 
 # Controls when the action will run.
 on:
@@ -16,7 +16,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  buildWindows:
+  html5Windows:
     runs-on: windows-latest
 
     steps:
@@ -52,14 +52,14 @@ jobs:
       - name: Create Version Tag
         run: echo "${{github.run_id}}" > VERSION
       - name: Compile
-        run: haxelib run lime Build windows --app-version="4.0.0-${{ github.run_id}}"
+        run: haxelib run lime html5 windows --app-version="4.0.0-${{ github.run_id}}"
       - name: Publish Artifact
         uses: actions/upload-artifact@v2.2.4
         with:
-          name: windowsBuild
-          path: export/release/windows/bin/Build
+          name: windowshtml5
+          path: export/release/windows/bin
   buildAndroid:
-    name: buildAndroid
+    name: html5Android
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -115,10 +115,10 @@ jobs:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
 
       - name: Compile
-        run: haxelib run lime Build android --app-version="4.0.0-${{ github.run_id}}"
+        run: haxelib run lime html5 android --app-version="4.0.0-${{ github.run_id}}"
 
       - name: Publish Artifact
         uses: actions/upload-artifact@v2.2.4
         with:
-          name: androidBuild
-          path: export/release/android/bin/app/Build/outputs/apk/debug
+          name: androidhtml5
+          path: export/release/android/bin/app/html5/outputs/apk/debug
